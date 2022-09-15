@@ -1,0 +1,11 @@
+const express = require('express');
+//express es una libreria que permite aplicaciones web
+const app = express();
+//app. es una instancia SET es un metodo de app
+app.set('port', process.env.PORT || 3000); //3000 es una puerto logico por donde va a escuchar nuestra app
+//port es puerto||set es setting||env es enviroment que es ambiente
+app.listen (app.get('port'), () => {
+    //get es obtener|| () es vacio y se comporta como una funcion
+    console.log('servidor', app.get ('port'));
+
+});
