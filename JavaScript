@@ -1,0 +1,84 @@
+//////////////////////////////CONSTANTES//////////////////
+const Discord = require("discord.js");
+const  client = new Discord.Client();
+
+const config = require("./config.json")
+/////////////////////////////PRESENCIA////////////////////
+function presence (){
+    client.user.setPresence({
+        status:"online",
+        activity: {
+            name: "e!help | v1.0",
+            type: 'WATCHING'
+        }
+    })
+}
+//////////////////////////////READY////////////////////////
+client.on("ready", () => {
+   console.log("ay no, me encendio, ya me dio ansiedad");
+   presence();
+   
+});
+
+////////////////////comandos sin prefix//////////////////
+
+client.on("message", (message) => {
+  
+if (message.content.startsWith('hola')) {
+    message.channel.send('¡Hey que tal!');
+}
+if (message.content.startsWith('xd')) {
+    message.channel.send('afirmo con un **XD** ');
+}
+
+if (message.content.startsWith('xd')) {
+    message.channel.send('afirmo con un **XD** ');
+}
+
+if (message.content.startsWith('c mamo')) {
+  message.channel.send('afirmo c mamo');
+}
+
+if (message.content.startsWith('ae')) {
+  message.channel.send('claro que si rey');
+}
+
+if (message.content.startsWith('tas vivo?')) {
+    message.channel.send('no');
+}
+
+if (message.content.startsWith('ola')) {
+    message.channel.send('de mar');
+}
+
+if (message.content.startsWith('a')) {
+    message.channel.send('como que ´a´ ');
+}
+
+ if (message.content.startsWith("ping")) {
+  message.reply("pong");
+}
+
+});
+////////////////////////COMANDOS PREFIX////////////////////
+
+///////////////////////////VARIABLES///////////////////////
+
+let prefix = config.prefix;
+
+//////////////////////////ANTI-BUCLE///////////////////////
+client.on("message", (message) => {
+
+    if(message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase(); 
+
+  if(command === 'quiensoy'){
+    message.reply('se quien eres pero a a la vez no se quien eres')
+  }
+  if(command === 'botinfo'){
+    message.channel.send('soy un bot en proceso de creacion y pues nomames que mas quieres jajaja')
+  }
+  if(command === 'info'){
+    message.channel.send("cual info si ni estoy terminado jaja")
